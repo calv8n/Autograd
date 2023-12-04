@@ -1,23 +1,25 @@
 import subprocess
-
+import time
 
 def execution(FILE_NAME, exename) -> str:
-    cmd = ["gcc", FILE_NAME, "-o", exename]
-    run = [f"./{exename}"]
+    cmd = ["gcc", FILE_NAME,]
+    run = [f"./exname 2 2 1 2 3 4"]
     process = subprocess.Popen(
         cmd,
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,
+        stdin=subprocess.PIPE,
         text=True,
     )
     process.wait(10)
-    x = subprocess.run(run, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+    x = subprocess.run(run, stdout=subprocess.PIPE, stdin=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
     x = x.stdout
     return x
 
 
-admin_output = execution("utils/admin/sudoku.c", "sudoku")
-student_output = execution("utils/student/sudoku2.c", "sudoku2")
+#admin_output = execution("sudoku.c", "sudoku")
+
+student_output = execution("a2d.c", "a2d")
 
 
 # Vanilla compare
@@ -33,6 +35,6 @@ def compare(a_o, s_o) -> bool:
     return True
 
 
-print(admin_output)
-print(student_output)
-print("Does it match: ", compare(admin_output, student_output))
+#print("Admin Output:\n", admin_output)
+print("User Output:\n", student_output)
+#print("Does it match: ", compare(admin_output, student_output))
