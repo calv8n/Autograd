@@ -29,6 +29,6 @@ def compare_text_files(file1_path, file2_path):
 
 
 # Example usage
-file1_path = "output_admin.txt"
-file2_path = "output_student.txt"
+file1_path = "input.txt"
+file2_path = "output.txt"
 compare_text_files(file1_path, file2_path)
